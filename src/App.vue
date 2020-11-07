@@ -1,32 +1,116 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+	<div id="app">
+		<!--内容区域-start-->
+		<div class="app-content">
+			<router-view/>
+		</div>
+		<!--内容区域-end-->
+		<!--导航栏菜单-start-->
+		<div id="nav" class="menu-wrap" ref="menuWrap">
+			<router-link v-for="item in menuList" v-bind:to="item.path">
+				<p><img v-bind:src="item.path==currentPath?item.iconok:item.iconno" /></p>
+				<p>{{item.name}}</p>
+			</router-link>
+		</div>
+		<!--导航栏菜单-end-->
+	</div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+	export default {
+		name: "App",
+		data() {
+			return {
+				currentPath: "", //当前地址
+				menuList: [{
+					name: '首页',
+					path: '/home',
+					iconno: require('@/assets/menuIcon/homeno.png'),
+					iconok: require('@/assets/menuIcon/homeok.png'),
+				}, {
+					name: '案例',
+					path: '/example',
+					iconno: require('@/assets/menuIcon/exampleno.png'),
+					iconok: require('@/assets/menuIcon/exampleok.png'),
+				}, {
+					name: '我的',
+					path: '/mine',
+					iconno: require('@/assets/menuIcon/mineno.png'),
+					iconok: require('@/assets/menuIcon/mineok.png'),
+				}]
+			}
+		},
+		components: {
 
-#nav {
-  padding: 30px;
-}
+		},
+		methods: {
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+		},
+		computed: {
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+		},
+		watch: {
+			$route(to, from) {
+				/**
+				 * 监听路由变化时
+				 */
+				this.$data.currentPath = this.$route.path;
+				console.log(this.$data.currentPath)
+				console.log(to.matched)
+			}
+		},
+		created: function() {
+			this.$data.currentPath = this.$route.path;
+
+		},
+		/**
+		 * 实例被挂载后调用
+		 */
+		mounted() {
+			
+		}
+
+	}
+</script>
+
+<style scoped="scoped">
+	.app-content {
+		width: 100%;
+		margin-bottom: 60px;
+	}
+	
+	.menu-wrap {
+		border-top: 1px solid #dcdcdc;
+		width: 100%;
+		height: 60px;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		z-index: 1;
+		background-color: #fff;
+		display: flex;
+		flex-direction: row;
+	}
+	
+	.menu-wrap a {
+		color: #333;
+		font-size: 14px;
+		flex: 1;
+	}
+	
+	.menu-wrap .router-link-exact-active {
+		color: #00a2ef;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	
+	.menu-wrap a p {
+		text-align: center;
+	}
+	
+	.menu-wrap img {
+		width: 30px;
+		height: 30px;
+		margin-top: 5px;
+	}
 </style>
