@@ -1,21 +1,23 @@
 <template>
-	<div id="app">
-		<!--内容区域-start-->
-		<router-view/>
-		<!--内容区域-end-->
+	<div class="app-wrap">
+		<div class="example-index">
+			example
+		</div>
+		<my-footer></my-footer>
 	</div>
 </template>
 
 <script>
+	import myFooter from "@/views/base/footer/index"
 	export default {
-		name: "App",
+		name: "",
 		data() {
 			return {
 
 			}
 		},
 		components: {
-
+			myFooter
 		},
 		methods: {
 
@@ -35,7 +37,6 @@
 		mounted() {
 
 		}
-
 	}
 </script>
 

@@ -1,27 +1,21 @@
 <template>
-	<div id="app">
-		<!--内容区域-start-->
-		<router-view/>
-		<!--内容区域-end-->
+	<div class="projectIntroduce-wrap">
+		<my-header v-bind:title="title"></my-header>
+		{{title}}
 	</div>
 </template>
 
 <script>
+	import myHeader from "@/views/base/header/index"
 	export default {
-		name: "App",
+		name: 'projectIntroduce',
 		data() {
 			return {
-
+				title: "项目简介"
 			}
 		},
 		components: {
-
-		},
-		methods: {
-
-		},
-		computed: {
-
+			myHeader
 		},
 		watch: {
 

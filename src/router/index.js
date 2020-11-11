@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/home/index.vue'
 
 Vue.use(VueRouter)
 
@@ -14,7 +13,8 @@ const routes = [{
 	{
 		path: '/home',
 		name: 'Home',
-		component: Home,
+		component: () =>
+			import("@/views/main/home/index.vue"),
 	},
 	/**
 	 * 案例
@@ -23,7 +23,8 @@ const routes = [{
 		path: "/example",
 		name: "Example",
 		component: () =>
-			import("../views/example/index.vue")
+			import("@/views/main/example/index.vue"),
+		children: []
 	},
 	/**
 	 * 个人中心
@@ -32,16 +33,35 @@ const routes = [{
 		path: '/mine',
 		name: 'Mine',
 		component: () =>
-			import('../views/mine/index.vue'),
+			import('@/views/main/mine/index.vue'),
 
 	},
+	/**
+	 * 项目简介
+	 */
 	{
-		path: '/detail',
-		name: 'detail',
+		path: '/projectIntroduce',
+		name: 'projectIntroduce',
+		meta: {
+			name: "项目简介"
+		},
 		component: () =>
-			import('../views/mine/detail/index.vue'),
+			import('@/views/main/mine/mineMenu/projectIntroduce/index.vue'),
 
-	}
+	},
+	/**
+	 * 个人简介
+	 */
+	{
+		path: '/myIntroduce',
+		name: 'myIntroduce',
+		meta: {
+			name: "个人简介"
+		},
+		component: () =>
+			import('@/views/main/mine/mineMenu/myIntroduce/index.vue'),
+
+	},
 ]
 
 const router = new VueRouter({

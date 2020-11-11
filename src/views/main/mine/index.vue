@@ -1,46 +1,52 @@
 <template>
-	<div class="mine-index">
-		<!--header-start-->
-		<div class="mine-header">
-			<div class="mine-header-left">
-				<img class="mine-logo" v-bind:src="mineLogo" />
+	<div class="app-wrap">
+		<div class="mine-index">
+			<!--header-start-->
+			<div class="mine-header">
+				<div class="mine-header-left">
+					<img class="mine-logo" v-bind:src="mineLogo" />
+				</div>
+				<div class="mine-header-right">
+					<p class="mine-name">姓名</p>
+					<p class="mine-phone">手机号</p>
+				</div>
 			</div>
-			<div class="mine-header-right">
-				<p class="mine-name">姓名</p>
-				<p class="mine-phone">手机号</p>
-			</div>
+			<!--header-end-->
+			<!--菜单列表-start-->
+			<ul class="mine-menu">
+				<li class="mine-li arrow arrowRight" v-for="(item,index) in menuList" v-on:click="goNextPage(item.path)">{{item.name}}</li>
+			</ul>
+			<!--菜单列表-end-->
 		</div>
-		<!--header-end-->
-		<!--菜单列表-start-->
-		<ul class="mine-menu">
-			<li class="mine-li arrow arrowRight" v-on:click="goExample">我的数据</li>
-			<li class="mine-li arrow arrowRight" @click="goDetail">数据</li>
-			<li class="mine-li arrow arrowRight">我的数据</li>
-		</ul>
-		<!--菜单列表-end-->
+		<my-footer></my-footer>
 	</div>
+
 </template>
 
 <script>
+	import myFooter from "@/views/base/footer/index"
 	export default {
 		name: "mine",
 		data() {
 			return {
-				mineLogo: require("@/assets/mine/mine.png")
+				mineLogo: require("@/assets/mine/mine.png"),
+				menuList: [{
+					id: "001",
+					name: '项目简介',
+					path: '/projectIntroduce',
+				}, {
+					id: "002",
+					name: '个人简介',
+					path: '/myIntroduce',
+				}]
 			}
 		},
 		components: {
-
+			myFooter
 		},
 		methods: {
-			goExample: function() {
-				console.log("ok");
-			},
-			//编程
-			goDetail() {
-				this.$router.push({
-					path: "/detail"
-				})
+			goNextPage: function(path) {
+				this.$router.push(path);
 			}
 		},
 		computed: {

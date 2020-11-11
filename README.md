@@ -39,3 +39,26 @@ Vue.use(amfeFlexible)
       }
     }
   }
+
+
+####vue中引入swiper
+npm install vue-awesome-swiper@2.6.7 --save
+
+###Global Registration
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+
+
+###卸载软件
+1、安装插件
+
+npm install --save qrcode
+
+2、卸载插件
+
+npm uninstall qrcode

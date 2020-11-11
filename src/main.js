@@ -2,9 +2,21 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
+/**
+ * 引入vue开发移动端使用rem的适配方案
+ */
 import amfeFlexible from "amfe-flexible"
 Vue.use(amfeFlexible)
+
+/**
+ * 引入swiper
+ */
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false
 
@@ -18,10 +30,6 @@ Vue.prototype.getClientSize = function() {
 		clientWidth,
 		clientHeight
 	}
-}
-Vue.prototype.getMenuHeight = function() {
-	let menuHeight = this.$refs.menuWrap.offsetHeight;
-	console.log(menuHeight)
 }
 
 new Vue({
