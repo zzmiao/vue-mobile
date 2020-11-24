@@ -3,7 +3,7 @@
 		<swiper-slide class="swiper-slide" v-for="items in swiperList.swiper">
 			<img class="swiper-img" v-bind:src="items.img" />
 		</swiper-slide>
-		<div class="swiper-pagination" slot="pagination">1</div>
+		<div class="swiper-pagination" slot="pagination"></div>
 	</swiper>
 </template>
 
@@ -43,5 +43,7 @@
 	
 	.swiper-img {
 		width: 100%;
+		max-height: 375px;
 	}
+	
 </style>

@@ -54,6 +54,12 @@
 		},
 		watch: {
 
+		},
+		mounted() {
+			this.$nextTick(function() {
+                this.$store.commit("setUserName","苗振振");
+                this.$store.commit("setUserPwd","123456");
+			})
 		}
 	}
 </script>

@@ -1,3 +1,6 @@
+####这是一个初学者的练习项目，仅供个人学习使用
+
+
 # mobile-phone
 
 ## Project setup
